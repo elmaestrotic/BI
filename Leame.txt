@@ -4,10 +4,5 @@ C:\Proyectos\BI
 
 La DB Norte, fue suministrada previamente para la actividad de mapeos
 
-En la ruta de las grabaciones se encuentran los video - tutoriales que 
-apoyaran el desarrollo del ejercicio.
-
-Cordialmente 
-
-David Echeverri
-Facilitador
+**Recomiendo ver mis vídeos en Youtube sobre BI
+https://www.youtube.com/playlist?list=PLLlsZ8hly_od76HoYy841sS4KLR4Spqyc
