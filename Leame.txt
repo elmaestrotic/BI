@@ -1,0 +1,13 @@
+Ubicar la Carpeta de este ZIP en la ruta de su equipo:
+
+C:\Proyectos\BI
+
+La DB Norte, fue suministrada previamente para la actividad de mapeos
+
+En la ruta de las grabaciones se encuentran los video - tutoriales que 
+apoyaran el desarrollo del ejercicio.
+
+Cordialmente 
+
+David Echeverri
+Facilitador
