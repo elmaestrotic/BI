@@ -1,0 +1,662 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/18/2019 8:59:52 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-5923SU5"
+  DTS:CreatorName="DESKTOP-5923SU5\truen"
+  DTS:DTSID="{49EC392A-B8F7-41BB-B1E3-9C25ED76B287}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1300.375"
+  DTS:LocaleID="9226"
+  DTS:ObjectName="Ext_Pedidos_Detalle"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{98F36B53-6830-4553-AD3A-07D2A3D45A52}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Norte]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D8E5E5E8-6CD8-453F-A6C1-A243ACEE05FD}"
+      DTS:ObjectName="LocalHost.Norte">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Norte;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Norte 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{877214A6-FCBE-41EF-8FC5-7F94ED1C253D}"
+      DTS:ObjectName="LocalHost.Norte 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Norte;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Staging_BI]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1E729438-D372-4845-8C48-D3EA5A54202A}"
+      DTS:ObjectName="LocalHost.Staging_BI">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Staging_BI;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Staging_BI 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A98217FC-71B0-4F7D-83F5-CABFCB5B515A}"
+      DTS:ObjectName="LocalHost.Staging_BI 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Staging_BI;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Staging_BI 2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F3A9A10C-1298-4598-948F-75FCFB7A0E5B}"
+      DTS:ObjectName="LocalHost.Staging_BI 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Staging_BI;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Staging_BI 3]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E126C326-105F-44D6-A010-33DF649E9B63}"
+      DTS:ObjectName="LocalHost.Staging_BI 3">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Staging_BI;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Tarea de Extracción"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{E7D18461-C81D-420E-9F8C-972D4332F6AE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tarea de Extracción"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Tarea de Extracción\Auditar"
+              componentClassID="Microsoft.Lineage"
+              contactInfo="Auditar;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Incluye datos sobre el entorno en el que se ejecuta el paquete. Asigna variables del sistema a las nuevas columnas de salida. Por ejemplo, se agrega el nombre del equipo y del operador al flujo de datos."
+              name="Auditar">
+              <inputs>
+                <input
+                  refId="Package\Tarea de Extracción\Auditar.Inputs[Entrada de Auditar 1]"
+                  name="Entrada de Auditar 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea de Extracción\Auditar.Outputs[Salida de Auditar 1]"
+                  exclusionGroup="1"
+                  name="Salida de Auditar 1"
+                  synchronousInputId="Package\Tarea de Extracción\Auditar.Inputs[Entrada de Auditar 1]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea de Extracción\Auditar.Outputs[Salida de Auditar 1].Columns[FechaMod]"
+                      dataType="date"
+                      lineageId="Package\Tarea de Extracción\Auditar.Outputs[Salida de Auditar 1].Columns[FechaMod]"
+                      name="FechaMod">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Especifica el elemento de auditoría que produce esta columna."
+                          name="LineageItemSelected"
+                          typeConverter="LineageItemSelected">4</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Destino Stanging_Pedidos_Detalle"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[Ext_Pedidos_Detalle]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Connections[OleDbConnection]"
+                  connectionManagerID="{EABA017B-FEFF-49AB-8509-9536A7B850F9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[cnx_Staging_BI]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB].Columns[IdPedido]"
+                      cachedDataType="i4"
+                      cachedName="IdPedido"
+                      externalMetadataColumnId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB].ExternalColumns[IdPedido]"
+                      lineageId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].Columns[IdPedido]" />
+                    <inputColumn
+                      refId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB].Columns[IdProducto]"
+                      cachedDataType="i4"
+                      cachedName="IdProducto"
+                      externalMetadataColumnId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB].ExternalColumns[IdProducto]"
+                      lineageId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].Columns[IdProducto]" />
+                    <inputColumn
+                      refId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB].Columns[PrecioUnd]"
+                      cachedDataType="cy"
+                      cachedName="PrecioUnd"
+                      externalMetadataColumnId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB].ExternalColumns[PrecioUnd]"
+                      lineageId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].Columns[PrecioUnd]" />
+                    <inputColumn
+                      refId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB].Columns[Cantidad]"
+                      cachedDataType="i2"
+                      cachedName="Cantidad"
+                      externalMetadataColumnId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cantidad]"
+                      lineageId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].Columns[Cantidad]" />
+                    <inputColumn
+                      refId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB].Columns[Descuento]"
+                      cachedDataType="r4"
+                      cachedName="Descuento"
+                      externalMetadataColumnId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB].ExternalColumns[Descuento]"
+                      lineageId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].Columns[Descuento]" />
+                    <inputColumn
+                      refId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB].Columns[FechaMod]"
+                      cachedDataType="date"
+                      cachedName="FechaMod"
+                      externalMetadataColumnId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaMod]"
+                      lineageId="Package\Tarea de Extracción\Auditar.Outputs[Salida de Auditar 1].Columns[FechaMod]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB].ExternalColumns[IdPedido]"
+                      dataType="i4"
+                      name="IdPedido" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB].ExternalColumns[IdProducto]"
+                      dataType="i4"
+                      name="IdProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB].ExternalColumns[PrecioUnd]"
+                      dataType="cy"
+                      name="PrecioUnd" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cantidad]"
+                      dataType="i2"
+                      name="Cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB].ExternalColumns[Descuento]"
+                      dataType="r4"
+                      name="Descuento" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaMod]"
+                      dataType="dbTimeStamp"
+                      name="FechaMod" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Origen Norte_Pedidos_Detalle"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[Pedidos_Detalles]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Connections[OleDbConnection]"
+                  connectionManagerID="{B6A11E52-DE11-4B71-B7E8-0481D9AA6FF1}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[cnx_Norte]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].Columns[IdPedido]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].ExternalColumns[IdPedido]"
+                      lineageId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].Columns[IdPedido]"
+                      name="IdPedido"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].Columns[IdProducto]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].ExternalColumns[IdProducto]"
+                      lineageId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].Columns[IdProducto]"
+                      name="IdProducto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].Columns[PrecioUnd]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].ExternalColumns[PrecioUnd]"
+                      lineageId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].Columns[PrecioUnd]"
+                      name="PrecioUnd"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].Columns[Cantidad]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].ExternalColumns[Cantidad]"
+                      lineageId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].Columns[Cantidad]"
+                      name="Cantidad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].Columns[Descuento]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].ExternalColumns[Descuento]"
+                      lineageId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].Columns[Descuento]"
+                      name="Descuento"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].ExternalColumns[IdPedido]"
+                      dataType="i4"
+                      name="IdPedido" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].ExternalColumns[IdProducto]"
+                      dataType="i4"
+                      name="IdProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].ExternalColumns[PrecioUnd]"
+                      dataType="cy"
+                      name="PrecioUnd" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].ExternalColumns[Cantidad]"
+                      dataType="i2"
+                      name="Cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB].ExternalColumns[Descuento]"
+                      dataType="r4"
+                      name="Descuento" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de error de origen de OLE DB].Columns[IdPedido]"
+                      dataType="i4"
+                      lineageId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de error de origen de OLE DB].Columns[IdPedido]"
+                      name="IdPedido" />
+                    <outputColumn
+                      refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de error de origen de OLE DB].Columns[IdProducto]"
+                      dataType="i4"
+                      lineageId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de error de origen de OLE DB].Columns[IdProducto]"
+                      name="IdProducto" />
+                    <outputColumn
+                      refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de error de origen de OLE DB].Columns[PrecioUnd]"
+                      dataType="cy"
+                      lineageId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de error de origen de OLE DB].Columns[PrecioUnd]"
+                      name="PrecioUnd" />
+                    <outputColumn
+                      refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de error de origen de OLE DB].Columns[Cantidad]"
+                      dataType="i2"
+                      lineageId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de error de origen de OLE DB].Columns[Cantidad]"
+                      name="Cantidad" />
+                    <outputColumn
+                      refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de error de origen de OLE DB].Columns[Descuento]"
+                      dataType="r4"
+                      lineageId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de error de origen de OLE DB].Columns[Descuento]"
+                      name="Descuento" />
+                    <outputColumn
+                      refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Tarea de Extracción.Paths[Salida de Auditar 1]"
+              endId="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de Auditar 1"
+              startId="Package\Tarea de Extracción\Auditar.Outputs[Salida de Auditar 1]" />
+            <path
+              refId="Package\Tarea de Extracción.Paths[Salida de origen de OLE DB]"
+              endId="Package\Tarea de Extracción\Auditar.Inputs[Entrada de Auditar 1]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tarea SQL Borrado Staging"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{A04386CC-C76D-454F-B1B8-1D6D8DDB43FA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tarea SQL Borrado Staging"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EABA017B-FEFF-49AB-8509-9536A7B850F9}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.Ext_Clientes" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{B4F8F51D-C06D-4FCC-9301-CCA2584B8058}"
+      DTS:From="Package\Tarea SQL Borrado Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Tarea de Extracción" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Tarea de Extracción"
+          TopLeft="24.5,107.5" />
+        <NodeLayout
+          Size="215,42"
+          Id="Package\Tarea SQL Borrado Staging"
+          TopLeft="5.50000000000001,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="113,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="ETL: Extracción&#xA;BDO: Norte&#xA;BDD: Stanging_Ext_Pedidos_Detalle&#xA;Fecha: mayo-18-2019&#xA;Responsable: Anarvaez"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="215,104"
+          Id="7812ad34-b262-40f3-91aa-1c9a1cc008b8"
+          TopLeft="302,40" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Tarea de Extracción">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="114,42"
+          Id="Package\Tarea de Extracción\Auditar"
+          TopLeft="73,107.5" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle"
+          TopLeft="16,5.5" />
+        <EdgeLayout
+          Id="Package\Tarea de Extracción.Paths[Salida de origen de OLE DB]"
+          TopLeft="130,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="249,42"
+          Id="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle"
+          TopLeft="5.50000000000003,209.5" />
+        <EdgeLayout
+          Id="Package\Tarea de Extracción.Paths[Salida de Auditar 1]"
+          TopLeft="130,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea de Extracción\Origen Norte_Pedidos_Detalle">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea de Extracción\Destino Stanging_Pedidos_Detalle">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
