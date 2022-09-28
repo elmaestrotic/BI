@@ -1,0 +1,958 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/12/2019 6:32:49 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-2DKJ8GT"
+  DTS:CreatorName="DESKTOP-2DKJ8GT\BI"
+  DTS:DTSID="{CE1E36D1-8DA4-49DD-9A73-FFD17A873B40}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0600.250"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Ex_PedidosDetalle"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{3FE054C9-5461-4C81-9481-2199A7594980}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SC Extraccion"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{A26B9B6E-3125-49E5-BA66-5F6BE97359C0}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SC Extraccion">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SC Extraccion\DFT Ex PedidosDet"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{EF4F2F46-3421-4BCF-B5CC-32BDCC095384}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT Ex PedidosDet"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\SC Extraccion\DFT Ex PedidosDet\Audit"
+                  componentClassID="Microsoft.Lineage"
+                  contactInfo="Audit;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Includes data about the environment in which the package runs. Map system variables to new output columns. For example, add the name of the computer and operator to the data flow."
+                  name="Audit">
+                  <inputs>
+                    <input
+                      refId="Package\SC Extraccion\DFT Ex PedidosDet\Audit.Inputs[Audit Input 1]"
+                      name="Audit Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SC Extraccion\DFT Ex PedidosDet\Audit.Outputs[Audit Output 1]"
+                      exclusionGroup="1"
+                      name="Audit Output 1"
+                      synchronousInputId="Package\SC Extraccion\DFT Ex PedidosDet\Audit.Inputs[Audit Input 1]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\Audit.Outputs[Audit Output 1].Columns[Fecha_Mod]"
+                          dataType="date"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\Audit.Outputs[Audit Output 1].Columns[Fecha_Mod]"
+                          name="Fecha_Mod">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies which audit item this column produces."
+                              name="LineageItemSelected"
+                              typeConverter="LineageItemSelected">4</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DE SQL Staging Ex_PedidosDet"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Ex_PedidosDet]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Connections[OleDbConnection]"
+                      connectionManagerID="{25AE9498-AE5B-4D9A-B2FE-9B0F094F5855}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[cnx_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input].Columns[IdPedido]"
+                          cachedDataType="i4"
+                          cachedName="IdPedido"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input].ExternalColumns[IdPedido]"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].Columns[IdPedido]" />
+                        <inputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input].Columns[IdProducto]"
+                          cachedDataType="i4"
+                          cachedName="IdProducto"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input].ExternalColumns[IdProducto]"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].Columns[IdProducto]" />
+                        <inputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input].Columns[PrecioUnd]"
+                          cachedDataType="cy"
+                          cachedName="PrecioUnd"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input].ExternalColumns[PrecioUnd]"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].Columns[PrecioUnd]" />
+                        <inputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input].Columns[Cantidad]"
+                          cachedDataType="i2"
+                          cachedName="Cantidad"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].Columns[Cantidad]" />
+                        <inputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input].Columns[Descuento]"
+                          cachedDataType="r4"
+                          cachedName="Descuento"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input].ExternalColumns[Descuento]"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].Columns[Descuento]" />
+                        <inputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input].Columns[Fecha_Mod]"
+                          cachedDataType="date"
+                          cachedName="Fecha_Mod"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input].ExternalColumns[Fecha_Mod]"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\Audit.Outputs[Audit Output 1].Columns[Fecha_Mod]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input].ExternalColumns[IdPedido]"
+                          dataType="i4"
+                          name="IdPedido" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input].ExternalColumns[IdProducto]"
+                          dataType="i4"
+                          name="IdProducto" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input].ExternalColumns[PrecioUnd]"
+                          dataType="cy"
+                          name="PrecioUnd" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                          dataType="i2"
+                          name="Cantidad" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input].ExternalColumns[Descuento]"
+                          dataType="r4"
+                          name="Descuento" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input].ExternalColumns[Fecha_Mod]"
+                          dataType="dbTimeStamp"
+                          name="Fecha_Mod" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OR SQL Norte PedidosDet"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Pedidos_Detalles]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [IdPedido]
+      ,[IdProducto]
+      ,[PrecioUnd]
+      ,[Cantidad]
+      ,[Descuento]
+  FROM [Norte].[dbo].[Pedidos_Detalles]
+  WHERE [IdPedido] &gt; 
+	(
+		SELECT 	[ValorDelta] FROM [Staging].[dbo].[ADM_Deltas]
+			WHERE NombreDelta = 'FACTPEDIDOSDET'
+	)</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Connections[OleDbConnection]"
+                      connectionManagerID="{D225E873-9360-4158-93CD-4A1813503ED2}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[cnx_Norte]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].Columns[IdPedido]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].ExternalColumns[IdPedido]"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].Columns[IdPedido]"
+                          name="IdPedido"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].Columns[IdProducto]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].ExternalColumns[IdProducto]"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].Columns[IdProducto]"
+                          name="IdProducto"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].Columns[PrecioUnd]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].ExternalColumns[PrecioUnd]"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].Columns[PrecioUnd]"
+                          name="PrecioUnd"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].Columns[Cantidad]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].ExternalColumns[Cantidad]"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].Columns[Cantidad]"
+                          name="Cantidad"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].Columns[Descuento]"
+                          dataType="r4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].ExternalColumns[Descuento]"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].Columns[Descuento]"
+                          name="Descuento"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].ExternalColumns[IdPedido]"
+                          dataType="i4"
+                          name="IdPedido" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].ExternalColumns[IdProducto]"
+                          dataType="i4"
+                          name="IdProducto" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].ExternalColumns[PrecioUnd]"
+                          dataType="cy"
+                          name="PrecioUnd" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].ExternalColumns[Cantidad]"
+                          dataType="i2"
+                          name="Cantidad" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output].ExternalColumns[Descuento]"
+                          dataType="r4"
+                          name="Descuento" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Error Output].Columns[IdPedido]"
+                          dataType="i4"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Error Output].Columns[IdPedido]"
+                          name="IdPedido" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Error Output].Columns[IdProducto]"
+                          dataType="i4"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Error Output].Columns[IdProducto]"
+                          name="IdProducto" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Error Output].Columns[PrecioUnd]"
+                          dataType="cy"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Error Output].Columns[PrecioUnd]"
+                          name="PrecioUnd" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Error Output].Columns[Cantidad]"
+                          dataType="i2"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Error Output].Columns[Cantidad]"
+                          name="Cantidad" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Error Output].Columns[Descuento]"
+                          dataType="r4"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Error Output].Columns[Descuento]"
+                          name="Descuento" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SC Extraccion\DFT Ex PedidosDet.Paths[Audit Output 1]"
+                  endId="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet.Inputs[OLE DB Destination Input]"
+                  name="Audit Output 1"
+                  startId="Package\SC Extraccion\DFT Ex PedidosDet\Audit.Outputs[Audit Output 1]" />
+                <path
+                  refId="Package\SC Extraccion\DFT Ex PedidosDet.Paths[OLE DB Source Output]"
+                  endId="Package\SC Extraccion\DFT Ex PedidosDet\Audit.Inputs[Audit Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SC Extraccion\TSQL Borrar Staging"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{86E63449-D2F6-41AB-AACD-0264599A8743}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TSQL Borrar Staging"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{25AE9498-AE5B-4D9A-B2FE-9B0F094F5855}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.Ex_PedidosDet" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SC Extraccion.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{B21FFD8D-9FA1-49D6-A754-3FAC0B61CE01}"
+          DTS:From="Package\SC Extraccion\TSQL Borrar Staging"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SC Extraccion\DFT Ex PedidosDet" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SC Fin Fallido"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{E0149931-F505-4F85-BCE5-D5AF68D5128D}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SC Fin Fallido">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SC Fin Fallido\TSQL Registro Log"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{524508F9-837E-4838-88AC-2B39AAA5A474}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TSQL Registro Log"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{25AE9498-AE5B-4D9A-B2FE-9B0F094F5855}"
+              SQLTask:SqlStatementSource="EXEC usp_ADM_Upd_Log ?,?,?,?,'Paquete',3" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strIdEjecucion"
+                SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strNombre_ETL"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strMaquina"
+                SQLTask:DtsVariableName="System::MachineName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strUsuario"
+                SQLTask:DtsVariableName="System::UserName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SC Fin Ok"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{65228CF3-B5E2-496C-9AF4-12D91A06F741}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SC Fin Ok">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SC Fin Ok\TSQL Registro Log"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{728C1FFC-C771-4277-86C5-E5B3329CE632}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TSQL Registro Log"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{25AE9498-AE5B-4D9A-B2FE-9B0F094F5855}"
+              SQLTask:SqlStatementSource="EXEC usp_ADM_Upd_Log ?,?,?,?,'Paquete',2" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strIdEjecucion"
+                SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strNombre_ETL"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strMaquina"
+                SQLTask:DtsVariableName="System::MachineName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strUsuario"
+                SQLTask:DtsVariableName="System::UserName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SC Inicio"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{61E6AF07-6877-4BF0-81FD-06A1B1209DD2}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SC Inicio">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SC Inicio\TSQL Reg Log"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B100E351-071F-4A73-B9D9-BFC2CED32B7A}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TSQL Reg Log"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{25AE9498-AE5B-4D9A-B2FE-9B0F094F5855}"
+              SQLTask:SqlStatementSource="EXEC usp_ADM_Ins_Log ?,?,?,?,'Paquete',1,null,null,null,null" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strIdEjecucion"
+                SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strNombre_ETL"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strMaquina"
+                SQLTask:DtsVariableName="System::MachineName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strUsuario"
+                SQLTask:DtsVariableName="System::UserName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{70A83FC3-66A8-4980-A40E-6A2CFA28FE5A}"
+      DTS:From="Package\SC Inicio"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SC Extraccion" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{F600A14F-6CF2-411A-8911-623B4CADCF99}"
+      DTS:From="Package\SC Extraccion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SC Fin Ok" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{E40BACE7-4A0C-4C0D-B544-F2C3ABDFF221}"
+      DTS:From="Package\SC Extraccion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SC Fin Fallido"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="169,42"
+          Id="Package\SC Extraccion\DFT Ex PedidosDet"
+          TopLeft="8,99.9999999999999" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\SC Extraccion\TSQL Borrar Staging"
+          TopLeft="5.5,5.5" />
+        <EdgeLayout
+          Id="Package\SC Extraccion.PrecedenceConstraints[Constraint]"
+          TopLeft="92.75,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.4999999999999"
+              Start="0,0"
+              End="0,44.9999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.9999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="False"
+          PanelSize="231,197"
+          Size="231,43"
+          Id="Package\SC Extraccion"
+          TopLeft="535.5,108.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\SC Fin Fallido\TSQL Registro Log"
+          TopLeft="13.3333333333333,7.77777777777783" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="False"
+          PanelSize="231,64"
+          Size="165,43"
+          Id="Package\SC Fin Fallido"
+          TopLeft="535.5,258" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\SC Fin Ok\TSQL Registro Log"
+          TopLeft="19.5555555555556,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="False"
+          PanelSize="231,56"
+          Size="148,43"
+          Id="Package\SC Fin Ok"
+          TopLeft="243.5,258" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\SC Inicio\TSQL Reg Log"
+          TopLeft="13.1111111111111,12.1111111111111" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="False"
+          PanelSize="231,112"
+          Size="231,43"
+          Id="Package\SC Inicio"
+          TopLeft="535.5,5.49999999999989" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="651,48.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="613.833333333333,151.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-296.333333333333,106.5"
+              Start="0,0"
+              End="-296.333333333333,99">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.0395528804815" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.0395528804815"
+                    Point2="0,43.0395528804815"
+                    Point3="-4,43.0395528804815" />
+                  <mssgle:LineSegment
+                    End="-292.333333333333,43.0395528804815" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-292.333333333333,43.0395528804815"
+                    Point2="-296.333333333333,43.0395528804815"
+                    Point3="-296.333333333333,47.0395528804815" />
+                  <mssgle:LineSegment
+                    End="-296.333333333333,99" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="688.166666666667,151.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-70.1666666666666,106.5"
+              Start="0,0"
+              End="-70.1666666666666,99">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.0395528804815" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.0395528804815"
+                    Point2="0,43.0395528804815"
+                    Point3="-4,43.0395528804815" />
+                  <mssgle:LineSegment
+                    End="-66.1666666666666,43.0395528804815" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-66.1666666666666,43.0395528804815"
+                    Point2="-70.1666666666666,43.0395528804815"
+                    Point3="-70.1666666666666,47.0395528804815" />
+                  <mssgle:LineSegment
+                    End="-70.1666666666666,99" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-50.3246809895833,48.0395528804815,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="ETL: Extracción&#xA;Fuente: Norte - PedidosDetalle&#xA;Destino: Staging Ex_PedidosDetalle&#xA;Versión: 1.0&#xA;Fecha: 2019/04/13&#xA;&#xA;Observaciones:"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="214,136"
+          Id="316d1558-af9c-47b2-b78d-b0b4dd850959"
+          TopLeft="236.928571428571,8.64285714285711" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\SC Extraccion\DFT Ex PedidosDet">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="210,42"
+          Id="Package\SC Extraccion\DFT Ex PedidosDet\Audit"
+          TopLeft="5.50000000000003,104.5" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet"
+          TopLeft="10.5,219.5" />
+        <EdgeLayout
+          Id="Package\SC Extraccion\DFT Ex PedidosDet.Paths[OLE DB Source Output]"
+          TopLeft="108.25,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57"
+              Start="0,0"
+              End="0,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SC Extraccion\DFT Ex PedidosDet.Paths[Audit Output 1]"
+          TopLeft="110.5,146.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13,73"
+              Start="0,0"
+              End="13,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.5"
+                    Point2="0,36.5"
+                    Point3="4,36.5" />
+                  <mssgle:LineSegment
+                    End="8.99999999999997,36.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.99999999999997,36.5"
+                    Point2="13,36.5"
+                    Point3="13,40.5" />
+                  <mssgle:LineSegment
+                    End="13,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SC Extraccion\DFT Ex PedidosDet\OR SQL Norte PedidosDet">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SC Extraccion\DFT Ex PedidosDet\DE SQL Staging Ex_PedidosDet">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,1042 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/12/2019 6:32:49 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-2DKJ8GT"
+  DTS:CreatorName="DESKTOP-2DKJ8GT\BI"
+  DTS:DTSID="{1016723B-3E7F-4961-AE2D-0A3505E927FC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0600.250"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Ex_Clientes"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{BCF90F81-159A-4795-AD7F-532EA74FC2DC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SC Extraccion"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{DE80E6F5-895B-42B0-8DE4-EB74D3ECA687}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SC Extraccion">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SC Extraccion\DFT Ex Clientes"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{3DDCA8F8-CB0B-4DAE-85B2-99C6E0B89F19}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT Ex Clientes"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\SC Extraccion\DFT Ex Clientes\Audit"
+                  componentClassID="Microsoft.Lineage"
+                  contactInfo="Audit;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Includes data about the environment in which the package runs. Map system variables to new output columns. For example, add the name of the computer and operator to the data flow."
+                  name="Audit">
+                  <inputs>
+                    <input
+                      refId="Package\SC Extraccion\DFT Ex Clientes\Audit.Inputs[Audit Input 1]"
+                      name="Audit Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SC Extraccion\DFT Ex Clientes\Audit.Outputs[Audit Output 1]"
+                      exclusionGroup="1"
+                      name="Audit Output 1"
+                      synchronousInputId="Package\SC Extraccion\DFT Ex Clientes\Audit.Inputs[Audit Input 1]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\Audit.Outputs[Audit Output 1].Columns[Fecha_Mod]"
+                          dataType="date"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\Audit.Outputs[Audit Output 1].Columns[Fecha_Mod]"
+                          name="Fecha_Mod">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies which audit item this column produces."
+                              name="LineageItemSelected"
+                              typeConverter="LineageItemSelected">4</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DE SQL Staging Ex_Clientes"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Ex_Clientes]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Connections[OleDbConnection]"
+                      connectionManagerID="{25AE9498-AE5B-4D9A-B2FE-9B0F094F5855}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[cnx_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].Columns[IdCliente]"
+                          cachedDataType="wstr"
+                          cachedLength="5"
+                          cachedName="IdCliente"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].ExternalColumns[IdCliente]"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[IdCliente]" />
+                        <inputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].Columns[Compania]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="Compania"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].ExternalColumns[Compania]"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[Compania]" />
+                        <inputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].Columns[Direccion]"
+                          cachedDataType="wstr"
+                          cachedLength="60"
+                          cachedName="Direccion"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].ExternalColumns[Direccion]"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[Direccion]" />
+                        <inputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].Columns[Ciudad]"
+                          cachedDataType="wstr"
+                          cachedLength="15"
+                          cachedName="Ciudad"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[Ciudad]" />
+                        <inputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].Columns[Region]"
+                          cachedDataType="wstr"
+                          cachedLength="15"
+                          cachedName="Region"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[Region]" />
+                        <inputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].Columns[Pais]"
+                          cachedDataType="wstr"
+                          cachedLength="15"
+                          cachedName="Pais"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].ExternalColumns[Pais]"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[Pais]" />
+                        <inputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].Columns[Telefono]"
+                          cachedDataType="wstr"
+                          cachedLength="24"
+                          cachedName="Telefono"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].ExternalColumns[Telefono]"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[Telefono]" />
+                        <inputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].Columns[Fecha_Mod]"
+                          cachedDataType="date"
+                          cachedName="Fecha_Mod"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].ExternalColumns[Fecha_Mod]"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\Audit.Outputs[Audit Output 1].Columns[Fecha_Mod]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].ExternalColumns[IdCliente]"
+                          dataType="wstr"
+                          length="10"
+                          name="IdCliente" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].ExternalColumns[Compania]"
+                          dataType="wstr"
+                          length="50"
+                          name="Compania" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].ExternalColumns[Direccion]"
+                          dataType="wstr"
+                          length="70"
+                          name="Direccion" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                          dataType="wstr"
+                          length="20"
+                          name="Ciudad" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                          dataType="wstr"
+                          length="20"
+                          name="Region" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].ExternalColumns[Pais]"
+                          dataType="wstr"
+                          length="20"
+                          name="Pais" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].ExternalColumns[Telefono]"
+                          dataType="wstr"
+                          length="30"
+                          name="Telefono" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input].ExternalColumns[Fecha_Mod]"
+                          dataType="dbTimeStamp"
+                          name="Fecha_Mod" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OR SQL Norte Clientes"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Clientes]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Connections[OleDbConnection]"
+                      connectionManagerID="{D225E873-9360-4158-93CD-4A1813503ED2}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[cnx_Norte]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[IdCliente]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].ExternalColumns[IdCliente]"
+                          length="5"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[IdCliente]"
+                          name="IdCliente"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[Compania]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].ExternalColumns[Compania]"
+                          length="40"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[Compania]"
+                          name="Compania"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[Direccion]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].ExternalColumns[Direccion]"
+                          length="60"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[Direccion]"
+                          name="Direccion"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[Ciudad]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].ExternalColumns[Ciudad]"
+                          length="15"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[Ciudad]"
+                          name="Ciudad"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[Region]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].ExternalColumns[Region]"
+                          length="15"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[Region]"
+                          name="Region"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[Pais]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].ExternalColumns[Pais]"
+                          length="15"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[Pais]"
+                          name="Pais"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[Telefono]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].ExternalColumns[Telefono]"
+                          length="24"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].Columns[Telefono]"
+                          name="Telefono"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].ExternalColumns[IdCliente]"
+                          dataType="wstr"
+                          length="5"
+                          name="IdCliente" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].ExternalColumns[Compania]"
+                          dataType="wstr"
+                          length="40"
+                          name="Compania" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].ExternalColumns[ContactoNombre]"
+                          dataType="wstr"
+                          length="30"
+                          name="ContactoNombre" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].ExternalColumns[ContactoTitulo]"
+                          dataType="wstr"
+                          length="30"
+                          name="ContactoTitulo" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].ExternalColumns[Direccion]"
+                          dataType="wstr"
+                          length="60"
+                          name="Direccion" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].ExternalColumns[Ciudad]"
+                          dataType="wstr"
+                          length="15"
+                          name="Ciudad" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].ExternalColumns[Region]"
+                          dataType="wstr"
+                          length="15"
+                          name="Region" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].ExternalColumns[Pais]"
+                          dataType="wstr"
+                          length="15"
+                          name="Pais" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].ExternalColumns[Telefono]"
+                          dataType="wstr"
+                          length="24"
+                          name="Telefono" />
+                        <externalMetadataColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output].ExternalColumns[Fax]"
+                          dataType="wstr"
+                          length="24"
+                          name="Fax" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output].Columns[IdCliente]"
+                          dataType="wstr"
+                          length="5"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output].Columns[IdCliente]"
+                          name="IdCliente" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output].Columns[Compania]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output].Columns[Compania]"
+                          name="Compania" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output].Columns[Direccion]"
+                          dataType="wstr"
+                          length="60"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output].Columns[Direccion]"
+                          name="Direccion" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output].Columns[Ciudad]"
+                          dataType="wstr"
+                          length="15"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output].Columns[Ciudad]"
+                          name="Ciudad" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output].Columns[Region]"
+                          dataType="wstr"
+                          length="15"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output].Columns[Region]"
+                          name="Region" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output].Columns[Pais]"
+                          dataType="wstr"
+                          length="15"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output].Columns[Pais]"
+                          name="Pais" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output].Columns[Telefono]"
+                          dataType="wstr"
+                          length="24"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output].Columns[Telefono]"
+                          name="Telefono" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SC Extraccion\DFT Ex Clientes.Paths[Audit Output 1]"
+                  endId="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes.Inputs[OLE DB Destination Input]"
+                  name="Audit Output 1"
+                  startId="Package\SC Extraccion\DFT Ex Clientes\Audit.Outputs[Audit Output 1]" />
+                <path
+                  refId="Package\SC Extraccion\DFT Ex Clientes.Paths[OLE DB Source Output]"
+                  endId="Package\SC Extraccion\DFT Ex Clientes\Audit.Inputs[Audit Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SC Extraccion\TSQL Borrar Staging"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5EA6F5DB-A1AD-492A-BAA3-98DA77D69CDE}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TSQL Borrar Staging"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{25AE9498-AE5B-4D9A-B2FE-9B0F094F5855}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.Ex_Clientes" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SC Extraccion.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{297BA6E3-6D20-4724-8BD6-3FAE99EBE5E2}"
+          DTS:From="Package\SC Extraccion\TSQL Borrar Staging"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SC Extraccion\DFT Ex Clientes" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SC Fin Fallido"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{2BF22EFF-1149-4C68-B1C3-83A21A6A9A6C}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SC Fin Fallido">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SC Fin Fallido\TSQL Registro Log"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{0017df2e-9841-43d1-86c1-085b8a4a31ab}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TSQL Registro Log"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{25AE9498-AE5B-4D9A-B2FE-9B0F094F5855}"
+              SQLTask:SqlStatementSource="EXEC usp_ADM_Upd_Log ?,?,?,?,'Paquete',3" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strIdEjecucion"
+                SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strNombre_ETL"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strMaquina"
+                SQLTask:DtsVariableName="System::MachineName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strUsuario"
+                SQLTask:DtsVariableName="System::UserName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SC Fin Ok"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{9E6FC6DE-398A-4FA4-8866-E639A3441702}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SC Fin Ok">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SC Fin Ok\TSQL Registro Log"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{D8BDBF36-282A-49FA-B9F1-F794709BCAC8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TSQL Registro Log"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{25AE9498-AE5B-4D9A-B2FE-9B0F094F5855}"
+              SQLTask:SqlStatementSource="EXEC usp_ADM_Upd_Log ?,?,?,?,'Paquete',2" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strIdEjecucion"
+                SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strNombre_ETL"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strMaquina"
+                SQLTask:DtsVariableName="System::MachineName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strUsuario"
+                SQLTask:DtsVariableName="System::UserName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SC Inicio"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{CE16A8ED-403A-4C2E-9B17-D5B63406ABDB}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SC Inicio">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SC Inicio\TSQL Reg Log"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{DF872443-9D12-4F89-B714-9F88910B90CF}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TSQL Reg Log"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{25AE9498-AE5B-4D9A-B2FE-9B0F094F5855}"
+              SQLTask:SqlStatementSource="EXEC usp_ADM_Ins_Log ?,?,?,?,'Paquete',1,null,null,null,null" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strIdEjecucion"
+                SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strNombre_ETL"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strMaquina"
+                SQLTask:DtsVariableName="System::MachineName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@strUsuario"
+                SQLTask:DtsVariableName="System::UserName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{8B5821CC-9823-4E8A-897E-7CB19ACCB44C}"
+      DTS:From="Package\SC Inicio"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SC Extraccion" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{E2500E2E-6094-4851-9848-62F7AB2B1F91}"
+      DTS:From="Package\SC Extraccion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SC Fin Ok" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{3F63839D-D469-470E-9AE1-CB4557E253D1}"
+      DTS:From="Package\SC Extraccion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SC Fin Fallido"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="175,42"
+          Id="Package\SC Extraccion\DFT Ex Clientes"
+          TopLeft="8,99.9999999999999" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\SC Extraccion\TSQL Borrar Staging"
+          TopLeft="5.5,5.5" />
+        <EdgeLayout
+          Id="Package\SC Extraccion.PrecedenceConstraints[Constraint]"
+          TopLeft="94.2499999999999,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.5"
+              Start="0,0"
+              End="0,45">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="False"
+          PanelSize="231,197"
+          Size="231,43"
+          Id="Package\SC Extraccion"
+          TopLeft="535.5,108.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\SC Fin Fallido\TSQL Registro Log"
+          TopLeft="13.3333333333333,7.77777777777783" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="False"
+          PanelSize="231,64"
+          Size="165,43"
+          Id="Package\SC Fin Fallido"
+          TopLeft="535.5,258" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\SC Fin Ok\TSQL Registro Log"
+          TopLeft="19.5555555555556,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="False"
+          PanelSize="231,56"
+          Size="148,43"
+          Id="Package\SC Fin Ok"
+          TopLeft="243.5,258" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\SC Inicio\TSQL Reg Log"
+          TopLeft="13.1111111111111,12.1111111111111" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="False"
+          PanelSize="231,112"
+          Size="231,43"
+          Id="Package\SC Inicio"
+          TopLeft="535.5,5.49999999999989" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="651,48.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="613.833333333333,151.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-296.333333333333,106.5"
+              Start="0,0"
+              End="-296.333333333333,99">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.0395528804815" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.0395528804815"
+                    Point2="0,43.0395528804815"
+                    Point3="-4,43.0395528804815" />
+                  <mssgle:LineSegment
+                    End="-292.333333333333,43.0395528804815" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-292.333333333333,43.0395528804815"
+                    Point2="-296.333333333333,43.0395528804815"
+                    Point3="-296.333333333333,47.0395528804815" />
+                  <mssgle:LineSegment
+                    End="-296.333333333333,99" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="688.166666666667,151.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-70.1666666666666,106.5"
+              Start="0,0"
+              End="-70.1666666666666,99">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.0395528804815" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.0395528804815"
+                    Point2="0,43.0395528804815"
+                    Point3="-4,43.0395528804815" />
+                  <mssgle:LineSegment
+                    End="-66.1666666666666,43.0395528804815" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-66.1666666666666,43.0395528804815"
+                    Point2="-70.1666666666666,43.0395528804815"
+                    Point3="-70.1666666666666,47.0395528804815" />
+                  <mssgle:LineSegment
+                    End="-70.1666666666666,99" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-50.3246809895833,48.0395528804815,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="ETL: Extracción&#xA;Fuente: Norte - Clientes&#xA;Destino: Staging Ex_Clientes&#xA;Versión: 1.0&#xA;Fecha: 2019/04/12&#xA;&#xA;Observaciones:"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="177,136"
+          Id="316d1558-af9c-47b2-b78d-b0b4dd850959"
+          TopLeft="236.928571428571,8.64285714285711" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\SC Extraccion\DFT Ex Clientes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="210,42"
+          Id="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes"
+          TopLeft="5.50000000000001,5.5" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\SC Extraccion\DFT Ex Clientes\Audit"
+          TopLeft="5.50000000000003,107.5" />
+        <EdgeLayout
+          Id="Package\SC Extraccion\DFT Ex Clientes.Paths[OLE DB Source Output]"
+          TopLeft="110.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="210,42"
+          Id="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes"
+          TopLeft="5.50000000000003,209.5" />
+        <EdgeLayout
+          Id="Package\SC Extraccion\DFT Ex Clientes.Paths[Audit Output 1]"
+          TopLeft="110.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SC Extraccion\DFT Ex Clientes\OR SQL Norte Clientes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SC Extraccion\DFT Ex Clientes\DE SQL Staging Ex_Clientes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
